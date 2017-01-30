@@ -10,32 +10,9 @@ var User = sequelize.import('./models/user');
 User.sync();
 //User.sync({force: true});   this will drop a table   DANGER this will drop all users
 
-app.use(bodyParser.json());
 
-//create api endpoint
-app.post('/api/user', function(req,res){
-	//when we post to api user, it will want a user object in the body
-	var username = req.body.user.username;
-	var pass = req.body.user.password;
-	
-	//match the model we create above
-	//sequelize - take the user model and go out to the db and create this:
-	User.create({
-		username: username,
-		passwordhash: ""
-	}).then(
-		//Sequelize is going to return the object it created from the db.
-		function createSuccess(user){
-			res.json({
-				user: user,
-				message: 'create'
-			});
-		},
-		function createError(err){
-			res.send(500, err.message);
-		}
-	);
-});
+app.use(bodyParser.json());
+app.use('/api/user', require('./routes/user'));
 
 //getting the exports from the headers.js file
 app.use(require('./middleware/headers'));
