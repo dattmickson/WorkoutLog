@@ -1,33 +1,14 @@
 var express = require("express");
 var app = express();
 var bodyParser = require('body-parser');
-var Sequelize = require('sequelize');
-
-var sequelize = new Sequelize('workoutlog', 'postgres', 'drpepper?', {
-	host: 'localhost',
-	dialect: 'postgres'
-});
-
-sequelize.authenticate().then(
-	function() {
-		console.log('connected to workoutlog postgres db');
-	},
-	function(err){
-		console.log(err);
-	}
-);
-
-//build a user model in sqllize
-var User = sequelize.define('user', {
-	username: Sequelize.STRING,
-	passwordhash: Sequelize.STRING,
-});
+var sequelize = require('./db.js');
+var User = sequelize.import('./models/user');
 
 //creates the table in postgres
 //matches the model we defined
 //doesnt drop the db
 User.sync();
-//User.sync({force: true});   this will drop a table
+//User.sync({force: true});   this will drop a table   DANGER this will drop all users
 
 app.use(bodyParser.json());
 
