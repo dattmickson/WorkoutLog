@@ -1,4 +1,4 @@
-var express = require("express");
+var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var sequelize = require('./db.js');
@@ -13,6 +13,7 @@ User.sync();
 
 app.use(bodyParser.json());
 app.use('/api/user', require('./routes/user'));
+app.use('/api/login', require('./routes/session'));
 
 //getting the exports from the headers.js file
 app.use(require('./middleware/headers'));
