@@ -12,7 +12,7 @@ $(function(){
 					password: password
 				}
 			};
-		}
+		
 			//signup post
 			var signup = $.ajax({
 				type: "POST",
@@ -24,18 +24,22 @@ $(function(){
 			signup.done(function(data){
 				if(data.sessionToken){
 					WorkoutLog.setAuthHeader(data.sessionToken);
+					console.log("you made it");
+					console.log(data.sessionToken);
 				}
 				$("#signup-modal").modal("hide");
 				$(".disabled").removeClass("disabled");
 				$("#loginout").text("Logout");
-					}).fail(function(){
-						$("#su_error").text("There was an issue with sign up").show();
-					});
+			})
+			signup.fail(function(){
+				console.log("oh no");
+				$("#su_error").text("There was an issue with sign up").show();
+			});
 
 		//login method
 
 		// loginout method
-
+}
 	});
 
 	//bind events
