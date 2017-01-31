@@ -9,7 +9,8 @@ var User = sequelize.import('./models/user');
 //creates the table in postgres
 //matches the model we defined
 //doesnt drop the db
-User.sync();
+sequelize.sync();
+//User.sync();     this will only load user table
 //User.sync({force: true});   this will drop a table   DANGER this will drop all users
 
 
@@ -23,7 +24,7 @@ app.use(require('./middleware/validate-session'));
 
 app.use('/api/user', require('./routes/user'));
 app.use('/api/login', require('./routes/session'));
-
+app.use('/api/definition', require('./routes/definition'));
 
 
 //sending response to request
