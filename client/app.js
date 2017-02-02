@@ -34,7 +34,7 @@ $(function(){
 	});
 
 	//bind tab change events
-	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e){
+	$('a[data-toggle=tab]').on('shown.bs.tab', function (e){
 		var target = $(e.target).attr("href"); // activated tab
 		if (target === "#log") {
 			WorkoutLog.log.setDefinitions();
@@ -43,6 +43,9 @@ $(function(){
 			WorkoutLog.log.setHistory();
 		}
 	});
+	// $("#myTab a:last").tab('show');   
+
+
 
 	//bind enter key
 	$(document).on("keypress", function(e){

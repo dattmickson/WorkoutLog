@@ -1,7 +1,7 @@
-module.exports = function(sequalize, DataTypes){
+module.exports = function(sequelize, DataTypes){
 	//wit define, the first argument is going to represent a column in the db table
 
-	return sequalize.define('definition', {
+	return sequelize.define('definition', {
 		description: DataTypes.STRING,
 		logType: DataTypes.STRING, //by time, reps, weight
 		owner: DataTypes.INTEGER

@@ -26,6 +26,8 @@ $(function(){
 					WorkoutLog.setAuthHeader(data.sessionToken);
 					console.log("you made it");
 					console.log(data.sessionToken);
+					WorkoutLog.definition.fetchAll();
+					WorkoutLog.log.fetchAll();
 				}
 				$("#signup-modal").modal("hide");
 				$(".disabled").removeClass("disabled");
@@ -58,6 +60,8 @@ $(function(){
 				if(data.sessionToken) {
 					WorkoutLog.setAuthHeader(data.sessionToken);
 					console.log("cash money");
+					WorkoutLog.definition.fetchAll();
+					WorkoutLog.log.fetchAll();
 				}
 				$("#login-modal").modal("hide");
 				$(".disabled").removeClass("disabled");
@@ -74,6 +78,7 @@ $(function(){
 				$("#loginout").text("Login");
 			}
 			//TODO: on logout make sure stuff is disabled
+			$(".nav-tabs a[data-toggle=tab]").addClass("disabled");
 		}
 
 	});

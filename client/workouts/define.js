@@ -1,3 +1,4 @@
+
 $(function(){
 	$.extend(WorkoutLog, {
 		definition: {
@@ -34,6 +35,7 @@ $(function(){
 				fetchDefs.done(function(data){
 					WorkoutLog.definition.userDefinitions = data;
 				})
+
 				.fail(function(err){
 					console.log(err);
 				});
