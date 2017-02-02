@@ -21,14 +21,16 @@ $(function(){
 				for (var i = 0; i<len; i++){
 					lis += "<li class='list-group-item'>" + history[i].logType + " - " + history[i].result +"</li>";
 				}
+				$("#history-list").children().remove();
+				$("#history-list").append(lis);
 			},
 
 
 			create: function() {
 				var itsLog = {
 					result: $("#log-result").val(),
-					logType: $("#log-type option:selected").text(), 
-					note: $("#log-notes").val()
+					type: $("#log-type option:selected").text(), 
+					notes: $("#log-notes").val()
 				};
 				var postData = { log: itsLog };
 				var newLog = $.ajax({
