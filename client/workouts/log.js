@@ -29,7 +29,7 @@ $(function(){
 			create: function() {
 				var itsLog = {
 					result: $("#log-result").val(),
-					type: $("#log-type option:selected").text(), 
+					logType: $("#log-type option:selected").text(), 
 					notes: $("#log-notes").val()
 				};
 				var postData = { log: itsLog };
@@ -41,9 +41,12 @@ $(function(){
 				});
 
 				newLog.done(function(data){
-					WorkoutLog.log.workouts.push(data.log);
+					WorkoutLog.log.workouts.push(data);
 					console.log("you added a log!");
 					console.log(data);
+					$("#log-result").val("");
+					$("#log-notes").val("");
+					$('a[href="#history"]').tab("show");
 				});
 			},
 

@@ -21,6 +21,9 @@ $(function(){
 					WorkoutLog.definition.userDefinitions.push(data.definition);
 					console.log("nice workout bub");
 					console.log(data);
+					$("#def-description").val("");
+					$("#def-logtype").val("");
+					$('a[href="#log"]').tab("show");
 				});
 			},
 

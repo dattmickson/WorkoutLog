@@ -7,7 +7,7 @@ var Log = sequelize.import('../models/log');
 router.post('/', function(req,res){
 	//variables
 	var result = req.body.log.result;
-	var type = req.body.log.type;
+	var logType = req.body.log.logType;
 	var notes = req.body.log.notes;
 	var owner = req.user.id;
 
@@ -16,7 +16,7 @@ router.post('/', function(req,res){
 		//create success
 		.create({
 			result: result,
-			logType: type,
+			logType: logType,
 			notes: notes,
 			owner: owner
 		})
